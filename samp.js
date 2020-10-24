@@ -1,11 +1,26 @@
- (function() {
-    "use strict";
-    kv.events.record.fetched(function(state){
-      var targetField = 'Q1'; //表示非表示を切り替えるフィールドのフィールドコード
-      var targetField2 = 'リンクA'; //表示非表示を切り替えるフィールドのフィールドコード
-      
-      xalert(1234);
-     
-      if(state.record[targetField].value >='2' ) kv.detail.getElementByCode(targetField).style.display = 'none';
+
+
+
+(function() {
+  "use strict";
+  kv.events.records.mounted = [function(state){ //ボタン非表示
+    state.records.forEach(function(record, index){
+      if(record['合計点'].value <= '2'){ //条件式 (例: record['スイッチ'].value === 'off')
+        document.querySelectorAll('.kv-table-view-content tr')[index+1].querySelector('td a').style.display = 'none';
+      }
     });
-  })();
+  }];
+  kv.events.record.mounted = [function(state){ //詳細ページ非表示
+   xalert(1234);
+    if(state.record['合計点'].value <= '5'){ //条件式 (例: state.record['スイッチ'].value === 'off')
+      location.href = location.href.split('/detail')[0];
+      location.reload();
+    }
+  }];
+  kv.events.records.mounted = [function (state) {
+    console.log(state)
+    console.log(kv.index.getRecordElement(state.records[0].$id.value))
+
+    return state;
+  }];
+})();
