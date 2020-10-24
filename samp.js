@@ -10,8 +10,7 @@
       }
     });
   }];
-  kv.events.record.mounted = [function(state){ //詳細ページ非表示
-   xalert(1234);
+  kv.events.record.mounted = [function(state){ //詳細ページ非表
     if(state.record['合計点'].value <= '5'){ //条件式 (例: state.record['スイッチ'].value === 'off')
       location.href = location.href.split('/detail')[0];
       location.reload();
