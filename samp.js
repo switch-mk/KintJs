@@ -6,6 +6,6 @@
     
     xalert(1234);
    
-    if(state.record[targetField].value >='2' )  xalert(123);
+    if(state.record[targetField].value >='2' ) kv.detail.getElementByCode(targetField).style.display = 'none';
   });
 })();
